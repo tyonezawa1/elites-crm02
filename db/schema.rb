@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 20161115115000) do
     t.integer  "customer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
   end
 
   add_index "comments", ["customer_id"], name: "index_comments_on_customer_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",       null: false
@@ -40,7 +38,7 @@ ActiveRecord::Schema.define(version: 20161115115000) do
     t.datetime "updated_at",  null: false
     t.integer  "company_id"
     t.integer  "post_id"
-    t.string   "user_id"
+    t.integer  "user_id"
   end
 
   add_index "customers", ["company_id"], name: "index_customers_on_company_id"
@@ -68,7 +66,7 @@ ActiveRecord::Schema.define(version: 20161115115000) do
     t.datetime "updated_at",                          null: false
     t.string   "family_name"
     t.string   "given_name"
-    t.string   "image_url"
+    t.text     "image_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
