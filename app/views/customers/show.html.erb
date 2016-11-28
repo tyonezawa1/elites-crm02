@@ -13,15 +13,22 @@
       
       <dt>役職名</dt>
       <dd style="margin:0px 0px 10px 20px"><%= @customer.post.position_name %></dd>
+      
+      <%= image_tag(current_user.image_url, :size => "150x150") %>
+      
     </dl>
     <%= link_to '編集', edit_customer_path(@customer), class: "btn btn-default" %>
     <%= link_to '戻る', customers_path, class: "btn btn-default" %>
+    
+  
+    
     
     <hr />
 
    <h2>対応履歴</h2>
     <% @comments.each do |comment| %>
       <div class="media">
+        <%= image_tag(current_user.image_url, :size => "50x50") %>
         <div class="media-body">
           <%= simple_format(comment.body) %>
           <p class="text-muted">
@@ -50,6 +57,7 @@
         <%= f.text_area :body, class: "form-control" %>
       </div>
       <%= f.hidden_field :customer_id, value: @customer.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit class: "btn btn-default" %>
     <% end %>
     

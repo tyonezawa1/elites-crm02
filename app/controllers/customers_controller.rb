@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :set_customers, only:[:edit, :update, :show, :destory]
   
   def index
@@ -14,8 +14,6 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    
-    validates :title,    length: { maximum: 75 }
     
     if  @customer.save
       redirect_to @customer
